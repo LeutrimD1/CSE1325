@@ -10,6 +10,9 @@ class main_window : public Gtk::Window{
 		//signal handlers
 		//widgets
 		Gtk::Image image;
+		Gtk::Button order;
+		Gtk::Button apply;
+		Gtk::Button quit;
 		Gtk::Grid grid;
 };
 #endif
