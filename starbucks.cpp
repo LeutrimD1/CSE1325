@@ -1,26 +1,50 @@
-#include "starbucks.h"
 #include <iostream>
-main_window::main_window(){
-//	set_size_request(724,483);	//sets the size of the window
-	set_title("STARBUCKS");
-	image.set("starbucks_img.jpg"); //sets the image
-	grid.attach(image, 0, 0, 3, 1); //attachs the image
-	//---------------------BUTTONS---------------------
-	order.add_label("Order");
-	grid.attach(order,2,2,1,1);
-	//signal handler here
-	//-------------------------------------------------
-	apply.add_label("Apply");
-	grid.attach(apply,1,2,1,1);
-	//signal handler here
-	//-------------------------------------------------
-	quit.add_label("Quit");
-	quit.signal_pressed().connect(sigc::mem_fun(*this,&main_window::close));
-	grid.attach(quit,0,2,1,1);	//attachs the button
-	//-------------------------------------------------
-	grid.show_all();		//shows all things attached to grid
-	add(grid);			//finally adds the grid to the window
+#include "examplewindow.h"
+
+ExampleWindow::ExampleWindow()
+: m_VBox(Gtk::ORIENTATION_VERTICAL),
+  m_Label1("Contents of tab 1"),
+  m_Label2("Contents of tab 2"),
+  m_Button_Quit("Quit")
+{
+  set_title("Gtk::Notebook example");
+  set_border_width(10);
+  set_default_size(400, 200);
+
+
+  add(m_VBox);
+
+  //Add the Notebook, with the button underneath:
+  m_Notebook.set_border_width(10);
+  m_VBox.pack_start(m_Notebook);
+  m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
+
+  m_ButtonBox.pack_start(m_Button_Quit, Gtk::PACK_SHRINK);
+  m_Button_Quit.signal_clicked().connect(sigc::mem_fun(*this,
+              &ExampleWindow::on_button_quit) );
+
+  //Add the Notebook pages:
+  m_Notebook.append_page(m_Label1, "First");
+  m_Notebook.append_page(m_Label2, "Second");
+
+  m_Notebook.signal_switch_page().connect(sigc::mem_fun(*this,
+              &ExampleWindow::on_notebook_switch_page) );
+
+  show_all_children();
 }
-main_window::~main_window(){		//destructor empty
-};
-//add signal handler functions below
+
+ExampleWindow::~ExampleWindow()
+{
+}
+
+void ExampleWindow::on_button_quit()
+{
+  hide();
+}
+
+void ExampleWindow::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_num)
+{
+  std::cout << "Switched to tab with index " << page_num << std::endl;
+
+  //You can also use m_Notebook.get_current_page() to get this index.
+}
