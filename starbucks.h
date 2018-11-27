@@ -3,11 +3,11 @@
 
 #include <gtkmm.h>
 
-class ExampleWindow : public Gtk::Window
+class main_window : public Gtk::Window
 {
 public:
-  ExampleWindow();
-  virtual ~ExampleWindow();
+  main_window();
+  virtual ~main_window();
 
 protected:
   //Signal handlers:
@@ -23,4 +23,4 @@ protected:
   Gtk::Button m_Button_Quit;
 };
 
-#endif //GTKMM_EXAMPLEWINDOW_H
+#endif //GTKMM_EXAMPLE:WINDOW_H

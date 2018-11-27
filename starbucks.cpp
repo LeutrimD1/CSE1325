@@ -1,7 +1,7 @@
 #include <iostream>
-#include "examplewindow.h"
+#include "starbucks.h"
 
-ExampleWindow::ExampleWindow()
+main_window::main_window()
 : m_VBox(Gtk::ORIENTATION_VERTICAL),
   m_Label1("Contents of tab 1"),
   m_Label2("Contents of tab 2"),
@@ -21,28 +21,28 @@ ExampleWindow::ExampleWindow()
 
   m_ButtonBox.pack_start(m_Button_Quit, Gtk::PACK_SHRINK);
   m_Button_Quit.signal_clicked().connect(sigc::mem_fun(*this,
-              &ExampleWindow::on_button_quit) );
+              &main_window::on_button_quit) );
 
   //Add the Notebook pages:
   m_Notebook.append_page(m_Label1, "First");
   m_Notebook.append_page(m_Label2, "Second");
 
   m_Notebook.signal_switch_page().connect(sigc::mem_fun(*this,
-              &ExampleWindow::on_notebook_switch_page) );
+              &main_window::on_notebook_switch_page) );
 
   show_all_children();
 }
 
-ExampleWindow::~ExampleWindow()
+main_window::~main_window()
 {
 }
 
-void ExampleWindow::on_button_quit()
+void main_window::on_button_quit()
 {
   hide();
 }
 
-void ExampleWindow::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_num)
+void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_num)
 {
   std::cout << "Switched to tab with index " << page_num << std::endl;
 
