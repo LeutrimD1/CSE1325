@@ -1,8 +1,12 @@
-#include "starbucks.h"
+#include "examplewindow.h"
 #include <gtkmm/application.h>
-int main(int argc, char* argv[]){
-	Gtk::Main app(argc, argv);
-	main_window window1;
-	Gtk::Main::run(window1);
-	return 0;
+
+int main(int argc, char *argv[])
+{
+  auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
+
+  ExampleWindow window;
+
+  //Shows the window and returns when it is closed.
+  return app->run(window);
 }
