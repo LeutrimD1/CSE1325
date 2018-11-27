@@ -9,5 +9,7 @@ class main_window : public Gtk::Window{
 		//add stuff here
 		//signal handlers
 		//widgets
+		Gtk::Image image;
+		Gtk::Grid grid;
 };
 #endif
