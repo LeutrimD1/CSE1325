@@ -16,11 +16,11 @@ protected:
 
 	//Child widgets:
 	Gtk::Box VBox;
-	Gtk::Notebook m_Notebook;
+	Gtk::Notebook Notebook;
 	Gtk::Image image;
-	Gtk::Label m_Label1, m_Label2, m_Label3;
+	Gtk::Label Label1, Label2, Label3;
 
-	Gtk::ButtonBox m_ButtonBox;
+	Gtk::ButtonBox ButtonBox;
 	Gtk::Button quit;
 	Gtk::Button order;
 };
