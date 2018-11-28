@@ -1,6 +1,6 @@
 #include <iostream>
 #include "starbucks.h"
-
+/*Sup*/
 main_window::main_window()
 : m_VBox(Gtk::ORIENTATION_VERTICAL),
 	m_Label1("Contents of tab 1"),
