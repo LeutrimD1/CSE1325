@@ -16,15 +16,23 @@ main_window::main_window()
 	image.set("starbucks_img.jpg");		//sets the image 
 	VBox.pack_start(Notebook);
 	VBox.pack_start(ButtonBox, Gtk::PACK_SHRINK);
+	Cappuccino_Check.join_group(Latte_Check);
+	Macchiato_Check.join_group(Latte_Check);
+	grid1.attach(Label1,0,0,1,1);
+	grid1.attach(Latte_Check,0,1,1,1);
+	grid1.attach(Cappuccino_Check,0,2,1,1);
+	grid1.attach(Macchiato_Check,0,3,1,1);
+
+
 
 	ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
 	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
 
 	//Add the Notebook pages:
 	Notebook.append_page(image, "Home");
-	Notebook.append_page(Label1, "Order");
-	Notebook.append_page(Label2, "Apply");
-	Notebook.append_page(Label3, "Nutrition Facts");
+	Notebook.append_page(grid1, "Order");
+	Notebook.append_page(grid2, "Apply");
+	Notebook.append_page(grid3, "Nutrition Facts");
 
 	Notebook.signal_switch_page().connect(sigc::mem_fun(*this, &main_window::on_notebook_switch_page));
 
@@ -34,7 +42,10 @@ main_window::main_window()
 main_window::~main_window()
 {
 }
+void main_window::check_send()
+{
 
+}
 void main_window::on_button_quit()
 {
 	hide();
