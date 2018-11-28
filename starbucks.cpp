@@ -1,28 +1,24 @@
 #include <iostream>
 #include "starbucks.h"
-
 main_window::main_window()
-: m_VBox(Gtk::ORIENTATION_VERTICAL),
+: VBox(Gtk::ORIENTATION_VERTICAL),
 	m_Label1("Contents of tab 1"),
 	m_Label2("Contents of tab 2"),
 	m_Label3("Contents of tab 3"),
-	m_Button_Quit("Quit")
+	quit("Quit")
 {
-	set_title("Gtk::Notebook example");
-	set_border_width(2);
-	set_default_size(743, 560);
-
-
-	add(m_VBox);
-
+	set_title("STARBUCKS");//sets the title the window
+	set_border_width(2);//sets the boarder width
+	set_default_size(743, 560);//sets the size of the main window
+	add(VBox);//adds the vbox to the window
 	//Add the Notebook, with the button underneath:
-	m_Notebook.set_border_width(3);
-	image.set("starbucks_img.jpg");
-	m_VBox.pack_start(m_Notebook);
-	m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
+	m_Notebook.set_border_width(3);//idk what this does
+	image.set("starbucks_img.jpg");//sets the image 
+	VBox.pack_start(m_Notebook);
+	VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
 
-	m_ButtonBox.pack_start(m_Button_Quit, Gtk::PACK_SHRINK);
-	m_Button_Quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
+	m_ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
+	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
 
 	//Add the Notebook pages:
 	m_Notebook.append_page(image, "Home");

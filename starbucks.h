@@ -15,13 +15,14 @@ protected:
 	void on_notebook_switch_page(Gtk::Widget* page, guint page_num);
 
 	//Child widgets:
-	Gtk::Box m_VBox;
+	Gtk::Box VBox;
 	Gtk::Notebook m_Notebook;
 	Gtk::Image image;
 	Gtk::Label m_Label1, m_Label2, m_Label3;
 
 	Gtk::ButtonBox m_ButtonBox;
-	Gtk::Button m_Button_Quit;
+	Gtk::Button quit;
+	Gtk::Button order;
 };
 
 #endif //GTKMM_EXAMPLE:WINDOW_H
