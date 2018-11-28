@@ -43,10 +43,6 @@ main_window::main_window()
 main_window::~main_window()
 {
 }
-void main_window::check_send()
-{
-
-}
 void main_window::on_button_quit()
 {
 	hide();
