@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 #include <iostream>
 #include "starbucks.h"
-/*Sup*/
+Sup
 main_window::main_window()
 : m_VBox(Gtk::ORIENTATION_VERTICAL),
 	m_Label1("Contents of tab 1"),
@@ -59,7 +59,7 @@ void main_window::on_notebook_switch_page(Gtk::Widget*, guint page_num)
 =======
 
 >>>>>>> cant_commit
-=======
+======*/
 #include <iostream>
 #include "starbucks.h"
 /*WHAT IS UP PARTY PEOPLE!!!!*/
@@ -116,4 +116,3 @@ void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_nu
 
 	//You can also use Notebook.get_current_page() to get this index.
 }
->>>>>>> c75fc7ad5a1882e294df3e23d840c2d70771381e
