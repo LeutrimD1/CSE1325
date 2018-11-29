@@ -51,6 +51,10 @@ void main_window::on_notebook_switch_page(Gtk::Widget*, guint page_num)
 
 	//You can also use m_Notebook.get_current_page() to get this index.
 }*/
+<<<<<<< HEAD
+=======
+
+>>>>>>> cant_commit
 =======
 #include <iostream>
 #include "starbucks.h"
