@@ -25,5 +25,5 @@ protected:
 	Gtk::ButtonBox ButtonBox;
 	Gtk::Button quit;//Button used to quit
 	Gtk::Button order;
-};
+};//test
 #endif //GTKMM_EXAMPLE:WINDOW_H
