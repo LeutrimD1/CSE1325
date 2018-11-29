@@ -8,7 +8,7 @@ main_window::main_window()
 	m_Label3("Contents of tab 3"),
 	m_Button_Quit("Quit")
 {
-	set_title("Gtk::Notebook example");
+	set_title("Gtk::Notebook example"); //change name before submitting
 	set_border_width(2);
 	set_default_size(743, 560);
 
