@@ -25,5 +25,14 @@ protected:
 	Gtk::ButtonBox ButtonBox;
 	Gtk::Button quit;//Button used to quit
 	Gtk::Button order;
+	//.....................nutrition widgets...............
+	Gtk::Button Latte; //opens Latte nutrition
+	Gtk::Button Cap; //opens Cappaccino nutrition
+	Gtk::Button Machi; //opens Macchiato nutrition
+
+	void on_latte(); //opens Latte
+	void on_cap(); //opens Cap
+	void on_machi(); //opens Machi
+
 };//test
 #endif //GTKMM_EXAMPLE:WINDOW_H
