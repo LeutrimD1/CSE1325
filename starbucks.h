@@ -22,7 +22,10 @@ protected:
 	Gtk::RadioButton Small_Check, Medium_Check, Large_Check; 	 //Radio buttons for selecting the size of a drink.
 	Gtk::RadioButton Vanilla_Check, Caramel_Check, None_Check; 	 //Radio buttons for selecting a flavor.
 	Gtk::Image image;						 //creates the image widget.
-	Gtk::Label Label_drink, Label2, Label3, Label_flavor, Label_size;//needs explaination.
+	Gtk::Label Label_drink, Label_flavor, Label_size;		//Labels for the .
+	Gtk::Label Label_Cappuccino, Label_Macchiato, Label_Latte;	//Labels for the drinks.
+	Gtk::Label Label_small, Label_medium, Label_large;		//Labels for the size.
+	Gtk::Label Label_vanilla, Label_caramell, Label_mocha;		//Labels for the flavor.
 	//---------------------page buttons---------------------
 	Gtk::ButtonBox ButtonBox;					//Holds the buttons below
 	Gtk::Button quit;						//Button used to quit

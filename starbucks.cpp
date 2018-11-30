@@ -4,11 +4,21 @@
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
-	Label_drink("Drink\t\t"),
-	Label_flavor("Size\t\t"),
-	Label_size("Flavor\t\t"),
-	Label2("Contents of tab 2"),
-	Label3("Contents of tab 3"),
+	Label_drink("Drink"),
+	Label_flavor("Flavor"),
+	Label_size("size"),
+	//----------------------------
+	Label_Cappuccino("Cappuccino"),
+	Label_Macchiato("Macchiato"),
+	Label_Latte("Latte"),
+	//---------------------------
+	Label_small("Small"),
+	Label_medium("Medium"),
+	Label_large("Large"),
+	//---------------------------
+	Label_vanilla("Vanilla"),
+	Label_caramell("Caramell"),
+	Label_mocha("Mocha"),
 	quit("Quit")
 {
 	set_title("STARBUCKS");			//sets the title the window
@@ -20,28 +30,44 @@ main_window::main_window()
 	image.set("starbucks_img.jpg");		//sets the image 
 	VBox.pack_start(Notebook);
 	VBox.pack_start(ButtonBox, Gtk::PACK_SHRINK);
+	//---------Connects all buttons to each other-----------
 	Cappuccino_Check.join_group(Latte_Check);
 	Macchiato_Check.join_group(Latte_Check);
 	Medium_Check.join_group(Small_Check);
 	Large_Check.join_group(Small_Check);
 	Caramel_Check.join_group(Vanilla_Check);
 	None_Check.join_group(Vanilla_Check);
-	/*---------Drink types check boxes----------*/
-	grid1.attach(Label_drink,     0,0,1,1);
-	grid1.attach(Latte_Check,     0,1,1,1);
-	grid1.attach(Cappuccino_Check,0,2,1,1);
-	grid1.attach(Macchiato_Check, 0,3,1,1);
+	/*---------Drink types check boxes---------------------*/
+	//labels
+	grid1.attach(Label_drink,     		0,0,1,1);
+	grid1.attach(Label_Latte,     		1,1,1,1);
+	grid1.attach(Label_Cappuccino,   	1,2,1,1);
+	grid1.attach(Label_Macchiato,     	1,3,1,1);
+	//checkboxes
+	grid1.attach(Latte_Check,     		0,1,1,1);
+	grid1.attach(Cappuccino_Check,		0,2,1,1);
+	grid1.attach(Macchiato_Check, 		0,3,1,1);
 	
-	/*---------Size check boxes----------*/
-	grid1.attach(Label_flavor,    1,0,1,1);
-	grid1.attach(Small_Check,     1,1,1,1);
-	grid1.attach(Medium_Check,    1,2,1,1);
-	grid1.attach(Large_Check,     1,3,1,1);
-	/*---------Flavor check boxes----------*/
+	/*---------Size check boxes----------------------------*/
+	//labels
 	grid1.attach(Label_size,      2,0,1,1);
-	grid1.attach(Vanilla_Check,   2,1,1,1);
-	grid1.attach(Caramel_Check,   2,2,1,1);
-	grid1.attach(None_Check,      2,3,1,1);
+	grid1.attach(Label_small,     3,1,1,1);
+	grid1.attach(Label_medium,    3,2,1,1);
+	grid1.attach(Label_large,     3,3,1,1);
+	//checkboxes
+	grid1.attach(Small_Check,     2,1,1,1);
+	grid1.attach(Medium_Check,    2,2,1,1);
+	grid1.attach(Large_Check,     2,3,1,1);
+	/*---------Flavor check boxes--------------------------*/
+	//labels
+	grid1.attach(Label_flavor,   	 4,0,1,1);
+	grid1.attach(Label_vanilla,    	 5,1,1,1);
+	grid1.attach(Label_caramell,   	 5,2,1,1);
+	grid1.attach(Label_mocha,    	 5,3,1,1);
+	//checkboxes
+	grid1.attach(Vanilla_Check,   4,1,1,1);
+	grid1.attach(Caramel_Check,   4,2,1,1);
+	grid1.attach(None_Check,      4,3,1,1);//need to add button for mocha flavor
 	
 	//We need to find someway to intergrate the follwing with the labels and radio buttons
 	//grid1.attach_next_to(child(Gtk::Widget), sibling(Gtk::Widget), Postition,Side, Width);
