@@ -19,8 +19,10 @@ protected:
 	//------------------------------------------------------
 	Gtk::Notebook Notebook;//Creates the widget which contains the pages.
 	Gtk::RadioButton Latte_Check, Cappuccino_Check, Macchiato_Check;//Radio buttons for selecting the drink.
+	Gtk::RadioButton Small_Check, Medium_Check, Large_Check; //Radio buttons for selecting the size of a drink.
+	Gtk::RadioButton Vanilla_Check, Caramel_Check, None_Check; //Radio buttons for selecting a flavor.
 	Gtk::Image image;//creates the image widget.
-	Gtk::Label Label1, Label2, Label3;//needs explaination.
+	Gtk::Label Label1, Label2, Label3, Label12, Label13;//needs explaination.
 	//---------------------page buttons---------------------
 	Gtk::ButtonBox ButtonBox;
 	Gtk::Button quit;//Button used to quit
