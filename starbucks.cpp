@@ -4,9 +4,9 @@
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
-	Label1("Drink\t\t"),
-	Label12("Size\t\t"),
-	Label13("Flavor\t\t"),
+	Label_drink("Drink\t\t"),
+	Label_flavor("Size\t\t"),
+	Label_size("Flavor\t\t"),
 	Label2("Contents of tab 2"),
 	Label3("Contents of tab 3"),
 	quit("Quit")
@@ -27,18 +27,18 @@ main_window::main_window()
 	Caramel_Check.join_group(Vanilla_Check);
 	None_Check.join_group(Vanilla_Check);
 	/*---------Drink types check boxes----------*/
-	grid1.attach(Label1,          0,0,1,1);
+	grid1.attach(Label_drink,     0,0,1,1);
 	grid1.attach(Latte_Check,     0,1,1,1);
 	grid1.attach(Cappuccino_Check,0,2,1,1);
 	grid1.attach(Macchiato_Check, 0,3,1,1);
 	
 	/*---------Size check boxes----------*/
-	grid1.attach(Label12, 	      1,0,1,1);
+	grid1.attach(Label_flavor,    1,0,1,1);
 	grid1.attach(Small_Check,     1,1,1,1);
 	grid1.attach(Medium_Check,    1,2,1,1);
 	grid1.attach(Large_Check,     1,3,1,1);
 	/*---------Flavor check boxes----------*/
-	grid1.attach(Label13,         2,0,1,1);
+	grid1.attach(Label_size,      2,0,1,1);
 	grid1.attach(Vanilla_Check,   2,1,1,1);
 	grid1.attach(Caramel_Check,   2,2,1,1);
 	grid1.attach(None_Check,      2,3,1,1);
