@@ -4,7 +4,9 @@
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
-	Label1("Contents of tab 1"),
+	Label1("Drink\t\t"),
+	Label12("Size\t\t"),
+	Label13("Flavor\t\t"),
 	Label2("Contents of tab 2"),
 	Label3("Contents of tab 3"),
 	quit("Quit")
@@ -20,11 +22,29 @@ main_window::main_window()
 	VBox.pack_start(ButtonBox, Gtk::PACK_SHRINK);
 	Cappuccino_Check.join_group(Latte_Check);
 	Macchiato_Check.join_group(Latte_Check);
-	grid1.attach(Label1,0,0,1,1);
-	grid1.attach(Latte_Check,0,1,1,1);
+	Medium_Check.join_group(Small_Check);
+	Large_Check.join_group(Small_Check);
+	Caramel_Check.join_group(Vanilla_Check);
+	None_Check.join_group(Vanilla_Check);
+	/*---------Drink types check boxes----------*/
+	grid1.attach(Label1,          0,0,1,1);
+	grid1.attach(Latte_Check,     0,1,1,1);
 	grid1.attach(Cappuccino_Check,0,2,1,1);
-	grid1.attach(Macchiato_Check,0,3,1,1);
-
+	grid1.attach(Macchiato_Check, 0,3,1,1);
+	
+	/*---------Size check boxes----------*/
+	grid1.attach(Label12, 	      1,0,1,1);
+	grid1.attach(Small_Check,     1,1,1,1);
+	grid1.attach(Medium_Check,    1,2,1,1);
+	grid1.attach(Large_Check,     1,3,1,1);
+	/*---------Flavor check boxes----------*/
+	grid1.attach(Label13,         2,0,1,1);
+	grid1.attach(Vanilla_Check,   2,1,1,1);
+	grid1.attach(Caramel_Check,   2,2,1,1);
+	grid1.attach(None_Check,      2,3,1,1);
+	
+	//We need to find someway to intergrate the follwing with the labels and radio buttons
+	//grid1.attach_next_to(child(Gtk::Widget), sibling(Gtk::Widget), Postition,Side, Width);
 
 	//Nutrition Tab Set Up	
 	Latte.add_label("Latte");
