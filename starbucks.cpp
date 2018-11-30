@@ -50,13 +50,10 @@ main_window::main_window()
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
 	Machi.add_label("Macchiatto");
+
 	grid3.add(Latte);
 	grid3.add(Cap);
 	grid3.add(Machi);
-	grid3.show_all();
-	
-
-	
 
 	ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
 	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
