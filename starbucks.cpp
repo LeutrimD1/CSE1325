@@ -1,7 +1,8 @@
-
 #include <iostream>
+#include <string>
 #include "starbucks.h"
 /*WHAT IS UP PARTY PEOPLE!!!!*/
+using namespace std;
 double drink_price = 0;
 double size_multi = 0;
 double flavor_price = 0;
@@ -27,9 +28,14 @@ main_window::main_window()
 	Label_mocha("Mocha"),
 	Flavor_Default("None"),
 	quit("Quit"),
-	calculate("Calculate")
+	calculate("Calculate"),
+	order("Send order")
 {
-	
+	//---empty out order file---
+	std::ofstream ofs;			//this block empty out txt file so you can fill it each run.
+	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);
+	ofs.close();
+	//--------------------------
 	set_title("STARBUCKS");			//sets the title the window
 	set_border_width(2);			//sets the border width
 	set_default_size(743, 560);		//sets the size of the main window
@@ -105,10 +111,7 @@ main_window::main_window()
 	Vanilla_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::vanilla_check_selected));
 	Caramel_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::caramel_check_selected));
 	Mocha_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::mocha_check_selected));
-	//We need to find someway to intergrate the follwing with the labels and radio buttons
-	//grid1.attach_next_to(child(Gtk::Widget), sibling(Gtk::Widget), Postition,Side, Width);
-
-	//Nutrition Tab Set Up	
+	//-------------------------Nutrition Tab Set Up-----------------------------
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
 	Machi.add_label("Macchiatto");
@@ -116,10 +119,14 @@ main_window::main_window()
 	grid3.add(Latte);
 	grid3.add(Cap);
 	grid3.add(Machi);
-	ButtonBox.pack_start(calculate, Gtk::PACK_SHRINK);
+	//---------------------------------------------------------------------------
+	//ButtonBox.pack_start(calculate, Gtk::PACK_SHRINK);
+	grid1.attach(calculate,		0,5,1,1);
+	grid1.attach(order,		1,5,2,1);
 	calculate.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_calculate));
 	ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
 	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
+	order.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_send_order));
 
 	//Add the Notebook pages:
 	Notebook.append_page(image, "Home");
@@ -134,6 +141,13 @@ main_window::main_window()
 
 main_window::~main_window()
 {
+}
+void main_window::on_send_order(){//work in progress
+	std::ofstream ofs;
+	ofs.open("list_orders.txt");
+	string hel = "hello";
+	ofs<<hel;
+	ofs.close();
 }
 void main_window::on_button_quit()
 {
@@ -151,11 +165,8 @@ void main_window::on_calculate()
 	Gtk::MessageDialog	dialog(*this, message, false, Gtk::MESSAGE_INFO);
 	dialog.run();
 }
-
-void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_num)
-{
+void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_num){
 	std::cout << "Switched to tab with index " << page_num << std::endl;
-
 	//You can also use Notebook.get_current_page() to get this index.
 }
 //---------------Signals for when each of the buttons are selected
@@ -207,75 +218,51 @@ Large: x3 of drink
 
 If for some reason yall want to change the values go ahead.
 */
-void main_window::no_size_selected()
-{
-	if(Pick_Size_Check.get_active())
-	{
+void main_window::no_size_selected(){
+	if(Pick_Size_Check.get_active()){
 		size_multi=0;
 		std::cout<<"Yo, you gotta pick a size Holmes"<<std::endl;
 	}	
-		
 }
-void main_window::small_check_selected()
-{
-	if(Small_Check.get_active())
-	{
+void main_window::small_check_selected(){
+	if(Small_Check.get_active()){
 		size_multi=1;
 		std::cout<<"You sure about that?"<<std::endl;
 	}	
-		
 }
-void main_window::medium_check_selected()
-{
-	if(Medium_Check.get_active())
-	{
+void main_window::medium_check_selected(){
+	if(Medium_Check.get_active()){
 		size_multi=2;
 		std::cout<<"Almost..."<<std::endl;
 	}	
-
 }
-void main_window::large_check_selected()
-{
-	if(Large_Check.get_active())
-	{
+void main_window::large_check_selected(){
+	if(Large_Check.get_active()){
 		size_multi=3;
 		std::cout<<"BIG BOIS!"<<std::endl;	
 	}
-
 }
-void main_window::no_flavor_selected()
-{
-	if(No_Flavor_Check.get_active())
-	{
+void main_window::no_flavor_selected(){
+	if(No_Flavor_Check.get_active()){
 		flavor_price = 0;
 		std::cout<<"Lame"<<std::endl;
 	}
-
 }
-void main_window::vanilla_check_selected()
-{
-	if(Vanilla_Check.get_active())	
-	{	
+void main_window::vanilla_check_selected(){
+	if(Vanilla_Check.get_active())	{	
 		flavor_price = .25;
 		std::cout<<"Boring"<<std::endl;
 	}
-
 }
-void main_window::caramel_check_selected()
-{
-	if(Caramel_Check.get_active())
-	{
+void main_window::caramel_check_selected(){
+	if(Caramel_Check.get_active()){
 		flavor_price = .50;
 		std::cout<<"SPELL IT RIGHT NEXT TIME LEUTRIM jk"<<std::endl;
 	}
-
 }
-void main_window::mocha_check_selected()
-{
-	if(Mocha_Check.get_active())
-	{
+void main_window::mocha_check_selected(){
+	if(Mocha_Check.get_active()){
 		flavor_price = .50;
 		std::cout<<"Yummy"<<std::endl;
 	}
-
 }
