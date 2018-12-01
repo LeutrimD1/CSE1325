@@ -141,49 +141,61 @@ void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_nu
 }
 void main_window::no_drink_selected()
 {
-	std::cout<<"Why no drinks"<<std::endl;
+	if(Pick_Drink_Check.get_active())
+		std::cout<<"Why no drinks"<<std::endl;
 }
 void main_window::latte_check_selected()
 {
-	std::cout<<"Yall want some lattes"<<std::endl;
+	if(Latte_Check.get_active())		
+		std::cout<<"Yall want some lattes"<<std::endl;
 }
 void main_window::cappuccino_check_selected()
 {
-	std::cout<<"Pop a cap"<<std::endl;
+	if(Cappuccino_Check.get_active())
+		std::cout<<"Pop a cap"<<std::endl;
 }
 void main_window::macchiato_check_selected()
 {
-	std::cout<<"Uh what"<<std::endl;
+	if(Macchiato_Check.get_active())
+		std::cout<<"Uh what"<<std::endl;
 }
 void main_window::no_size_selected()
 {
-	std::cout<<"Yo, you gotta pick a size"<<std::endl;
+	if(Pick_Size_Check.get_active())	
+		std::cout<<"Yo, you gotta pick a size"<<std::endl;
 }
 void main_window::small_check_selected()
 {
-	std::cout<<"You sure about that?"<<std::endl;
+	if(Small_Check.get_active())	
+		std::cout<<"You sure about that?"<<std::endl;
 }
 void main_window::medium_check_selected()
 {
-	std::cout<<"Almost..."<<std::endl;
+	if(Medium_Check.get_active())	
+		std::cout<<"Almost..."<<std::endl;
 }
 void main_window::large_check_selected()
 {
-	std::cout<<"BIG BOIS!"<<std::endl;
+	if(Large_Check.get_active())
+		std::cout<<"BIG BOIS!"<<std::endl;
 }
 void main_window::no_flavor_selected()
 {
-	std::cout<<"Lame"<<std::endl;
+	if(No_Flavor_Check.get_active())
+		std::cout<<"Lame"<<std::endl;
 }
 void main_window::vanilla_check_selected()
 {
-	std::cout<<"Boring"<<std::endl;
+	if(Vanilla_Check.get_active())	
+		std::cout<<"Boring"<<std::endl;
 }
 void main_window::caramel_check_selected()
 {
-	std::cout<<"SPELL IT RIGHT NEXT TIME LEUTRIM jk"<<std::endl;
+	if(Caramel_Check.get_active())
+		std::cout<<"SPELL IT RIGHT NEXT TIME LEUTRIM jk"<<std::endl;
 }
 void main_window::mocha_check_selected()
 {
-	std::cout<<"Yummy"<<std::endl;
+	if(Mocha_Check.get_active())
+		std::cout<<"Yummy"<<std::endl;
 }
