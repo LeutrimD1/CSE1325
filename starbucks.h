@@ -29,7 +29,7 @@ protected:
 	Gtk::Label Label_vanilla, Label_caramel, Label_mocha, Flavor_Default;		//Labels for the flavor.
 	//---------------------page buttons---------------------
 	Gtk::ButtonBox ButtonBox;					//Holds the buttons below
-	Gtk::Button quit;						//Button used to quit
+	Gtk::Button quit, calculate;						//Button used to quit
 	Gtk::Button order;						//Button used to send the order out
 	//.....................nutrition widgets...............
 	Gtk::Button Latte; 					//opens Latte nutrition
@@ -51,6 +51,8 @@ protected:
 	void vanilla_check_selected();				//Vanilla_check selected
 	void caramel_check_selected();				//Caramel_check selected
 	void mocha_check_selected();				//None_check selected
+
+	void on_calculate();					//calculates price
 	void on_latte(); 					//opens Latte
 	void on_cap(); 						//opens Cap
 	void on_machi(); 					//opens Machi
