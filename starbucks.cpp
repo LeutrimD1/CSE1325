@@ -116,7 +116,7 @@ main_window::main_window()
 	First_Name.set_text("*Enter first name here");
 	Last_Name.set_text("*Enter last name here");
 	Age.set_text("*Enter age here*");
-	Submit.add_label("Submit Application");	
+	Submit.add_label("Submit Application");
 
 	grid2.add(First_Name);
 	grid2.add(Last_Name);
