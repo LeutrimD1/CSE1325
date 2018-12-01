@@ -6,23 +6,26 @@ main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
 	Label_drink("Drink"),
 	Label_flavor("Flavor"),
-	Label_size("size"),
+	Label_size("Size"),
 	//----------------------------
 	Label_Cappuccino("Cappuccino"),
 	Label_Macchiato("Macchiato"),
 	Label_Latte("Latte"),
+	Drink_Default("Select drink"),
 	//---------------------------
 	Label_small("Small"),
 	Label_medium("Medium"),
 	Label_large("Large"),
+	Size_Default("Select size"),
 	//---------------------------
 	Label_vanilla("Vanilla"),
-	Label_caramell("Caramell"),
+	Label_caramel("Caramel"),
 	Label_mocha("Mocha"),
+	Flavor_Default("None"),
 	quit("Quit")
 {
 	set_title("STARBUCKS");			//sets the title the window
-	set_border_width(2);			//sets the boarder width
+	set_border_width(2);			//sets the border width
 	set_default_size(743, 560);		//sets the size of the main window
 	add(VBox);				//adds the vbox to the window
 	//Add the Notebook, with the button underneath:
@@ -31,44 +34,71 @@ main_window::main_window()
 	VBox.pack_start(Notebook);
 	VBox.pack_start(ButtonBox, Gtk::PACK_SHRINK);
 	//---------Connects all buttons to each other-----------
-	Cappuccino_Check.join_group(Latte_Check);
+	Latte_Check.join_group(Pick_Drink_Check);
+	Cappuccino_Check.join_group(Pick_Drink_Check);
+	Macchiato_Check.join_group(Pick_Drink_Check);	
+	/*Cappuccino_Check.join_group(Latte_Check);
 	Macchiato_Check.join_group(Latte_Check);
-	Medium_Check.join_group(Small_Check);
-	Large_Check.join_group(Small_Check);
-	Caramel_Check.join_group(Vanilla_Check);
-	None_Check.join_group(Vanilla_Check);
+	Pick_Drink_Check.join_group(Latte_Check);*/
+	Small_Check.join_group(Pick_Size_Check);
+	Medium_Check.join_group(Pick_Size_Check);
+	Large_Check.join_group(Pick_Size_Check);
+	//Pick_Size_Check.join_group(Small_Check);
+	Vanilla_Check.join_group(No_Flavor_Check);
+	Caramel_Check.join_group(No_Flavor_Check);
+	Mocha_Check.join_group(No_Flavor_Check);
+	//No_Flavor_Check.join_group(Vanilla_Check);
 	/*---------Drink types check boxes---------------------*/
 	//labels
 	grid1.attach(Label_drink,     		0,0,1,1);
-	grid1.attach(Label_Latte,     		1,1,1,1);
-	grid1.attach(Label_Cappuccino,   	1,2,1,1);
-	grid1.attach(Label_Macchiato,     	1,3,1,1);
+	grid1.attach(Drink_Default,    		1,1,1,1);
+	grid1.attach(Label_Latte,     		1,2,1,1);
+	grid1.attach(Label_Cappuccino,   	1,3,1,1);
+	grid1.attach(Label_Macchiato,     	1,4,1,1);
 	//checkboxes
-	grid1.attach(Latte_Check,     		0,1,1,1);
-	grid1.attach(Cappuccino_Check,		0,2,1,1);
-	grid1.attach(Macchiato_Check, 		0,3,1,1);
-	
+	grid1.attach(Pick_Drink_Check,		0,1,1,1);
+	grid1.attach(Latte_Check,     		0,2,1,1);
+	grid1.attach(Cappuccino_Check,		0,3,1,1);
+	grid1.attach(Macchiato_Check, 		0,4,1,1);
+	//attaching the signals to the checkboxes.
+	Pick_Drink_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::no_drink_selected));
+	Latte_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::latte_check_selected));
+	Cappuccino_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::cappuccino_check_selected));
+	Macchiato_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::macchiato_check_selected));
 	/*---------Size check boxes----------------------------*/
 	//labels
 	grid1.attach(Label_size,      2,0,1,1);
-	grid1.attach(Label_small,     3,1,1,1);
-	grid1.attach(Label_medium,    3,2,1,1);
-	grid1.attach(Label_large,     3,3,1,1);
+	grid1.attach(Size_Default,    3,1,1,1);
+	grid1.attach(Label_small,     3,2,1,1);
+	grid1.attach(Label_medium,    3,3,1,1);
+	grid1.attach(Label_large,     3,4,1,1);
 	//checkboxes
-	grid1.attach(Small_Check,     2,1,1,1);
-	grid1.attach(Medium_Check,    2,2,1,1);
-	grid1.attach(Large_Check,     2,3,1,1);
+	grid1.attach(Pick_Size_Check, 2,1,1,1);
+	grid1.attach(Small_Check,     2,2,1,1);
+	grid1.attach(Medium_Check,    2,3,1,1);
+	grid1.attach(Large_Check,     2,4,1,1);
+	//attaching the signals to the checkboxes
+	Pick_Size_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::no_size_selected));
+	Small_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::small_check_selected));
+	Medium_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::medium_check_selected));
+	Large_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::large_check_selected));
 	/*---------Flavor check boxes--------------------------*/
 	//labels
 	grid1.attach(Label_flavor,   	 4,0,1,1);
-	grid1.attach(Label_vanilla,    	 5,1,1,1);
-	grid1.attach(Label_caramell,   	 5,2,1,1);
-	grid1.attach(Label_mocha,    	 5,3,1,1);
+	grid1.attach(Flavor_Default,   	 5,1,1,1);
+	grid1.attach(Label_vanilla,    	 5,2,1,1);
+	grid1.attach(Label_caramel,   	 5,3,1,1);
+	grid1.attach(Label_mocha,    	 5,4,1,1);
 	//checkboxes
-	grid1.attach(Vanilla_Check,   4,1,1,1);
-	grid1.attach(Caramel_Check,   4,2,1,1);
-	grid1.attach(None_Check,      4,3,1,1);//need to add button for mocha flavor
-	
+	grid1.attach(No_Flavor_Check,   4,1,1,1);
+	grid1.attach(Vanilla_Check,   	  4,2,1,1);
+	grid1.attach(Caramel_Check,       4,3,1,1);
+	grid1.attach(Mocha_Check,         4,4,1,1);
+	//attaching the signals to the checkboxes
+	No_Flavor_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::no_flavor_selected));
+	Vanilla_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::vanilla_check_selected));
+	Caramel_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::caramel_check_selected));
+	Mocha_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::mocha_check_selected));
 	//We need to find someway to intergrate the follwing with the labels and radio buttons
 	//grid1.attach_next_to(child(Gtk::Widget), sibling(Gtk::Widget), Postition,Side, Width);
 
@@ -108,4 +138,52 @@ void main_window::on_notebook_switch_page(Gtk::Widget* /* page */, guint page_nu
 	std::cout << "Switched to tab with index " << page_num << std::endl;
 
 	//You can also use Notebook.get_current_page() to get this index.
+}
+void main_window::no_drink_selected()
+{
+	std::cout<<"Why no drinks"<<std::endl;
+}
+void main_window::latte_check_selected()
+{
+	std::cout<<"Yall want some lattes"<<std::endl;
+}
+void main_window::cappuccino_check_selected()
+{
+	std::cout<<"Pop a cap"<<std::endl;
+}
+void main_window::macchiato_check_selected()
+{
+	std::cout<<"Uh what"<<std::endl;
+}
+void main_window::no_size_selected()
+{
+	std::cout<<"Yo, you gotta pick a size"<<std::endl;
+}
+void main_window::small_check_selected()
+{
+	std::cout<<"You sure about that?"<<std::endl;
+}
+void main_window::medium_check_selected()
+{
+	std::cout<<"Almost..."<<std::endl;
+}
+void main_window::large_check_selected()
+{
+	std::cout<<"BIG BOIS!"<<std::endl;
+}
+void main_window::no_flavor_selected()
+{
+	std::cout<<"Lame"<<std::endl;
+}
+void main_window::vanilla_check_selected()
+{
+	std::cout<<"Boring"<<std::endl;
+}
+void main_window::caramel_check_selected()
+{
+	std::cout<<"SPELL IT RIGHT NEXT TIME LEUTRIM jk"<<std::endl;
+}
+void main_window::mocha_check_selected()
+{
+	std::cout<<"Yummy"<<std::endl;
 }
