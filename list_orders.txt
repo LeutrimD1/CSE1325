@@ -1,1 +1,4 @@
-hello
+List of orders for the day
+Cappuccino Medium Caramel Revenue as of now:$6.5
+Latte Small Vanilla Revenue as of now:$5.25
+Macchiato Large Mocha Revenue as of now:$26

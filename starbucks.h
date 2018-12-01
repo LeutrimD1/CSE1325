@@ -13,6 +13,7 @@ protected:
 	void on_notebook_switch_page(Gtk::Widget* page, guint page_num);
 	//Child widgets:
 	Gtk::Box VBox;							//VBox is for quit button at the bottom
+	std::ofstream ofs;						//out file stream for list_orders
 	//-----------------------tabs---------------------------
 	Gtk::Grid grid1;
 	Gtk::Grid grid2;
