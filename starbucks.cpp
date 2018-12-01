@@ -41,10 +41,6 @@ main_window::main_window()
 	calculate("Calculate"),
 	order("Send order")
 {
-	//---empty out order file---
-	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);
-	ofs.close();
-    
 	//---empty out application file---
 	outs.open("list_applications.txt",std::ofstream::out | std::ofstream::trunc);
 	outs.close();
