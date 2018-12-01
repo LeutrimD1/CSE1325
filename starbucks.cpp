@@ -14,6 +14,9 @@ string drink;
 string flavor;
 string size;
 //---------------------------------------------
+string first_name;
+string last_name;
+string age;
 main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
 	Label_drink("Drink"),
@@ -118,10 +121,18 @@ main_window::main_window()
 	Caramel_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::caramel_check_selected));
 	Mocha_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::mocha_check_selected));
 	//-------------------------Apply Tab Set Up--------------------------------
-	First_Name.set_text("*Enter first name here");
-	Last_Name.set_text("*Enter last name here");
+	First_Name.set_text("*Enter first name here*");
+	Last_Name.set_text("*Enter last name here*");
 	Age.set_text("*Enter age here*");
 	Submit.add_label("Submit Application");
+
+	First_Name.set_max_width_chars(25);
+	First_Name.set_width_chars(25);
+	Last_Name.set_max_width_chars(25);
+	Last_Name.set_width_chars(25);
+
+	//Attaching function to submit button
+	Submit.signal_pressed().connect(sigc::mem_fun(*this, &main_window::submit_application));
 
 	grid2.add(First_Name);
 	grid2.add(Last_Name);
@@ -277,5 +288,16 @@ void main_window::mocha_check_selected(){
 		flavor_price = .50;
 		std::cout<<"Yummy"<<std::endl;
 		flavor = "Mocha ";
+	}
+}
+//------------------Apply function-------------------------------
+void main_window::submit_application()
+{
+	if(Submit.get_focus_on_click())
+	{
+		first_name = First_Name.get_text();
+		last_name = Last_Name.get_text();
+		age = Age.get_text();
+		cout << "Dude thinks he's getting a job, LOL.'" << endl;
 	}
 }

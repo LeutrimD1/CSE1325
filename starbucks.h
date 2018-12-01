@@ -30,10 +30,10 @@ protected:
 	Gtk::Label Label_small, Label_medium, Label_large, Size_Default;		//Labels for the size.
 	Gtk::Label Label_vanilla, Label_caramel, Label_mocha, Flavor_Default;		//Labels for the flavor.
 	//---------------------page buttons---------------------
-	Gtk::ButtonBox ButtonBox;					//Holds the buttons below
-	Gtk::Button quit, calculate;					//Button used to quit
-	Gtk::Button order;						//Button used to send the order out
-	//---------------------apply widgets-------------------
+	Gtk::ButtonBox ButtonBox;				//Holds the buttons below
+	Gtk::Button quit, calculate;				//Button used to quit
+	Gtk::Button order;					//Button used to send the order out
+	//---------------------Apply Widgets-------------------
 	Gtk::Entry First_Name;					//single line to enter first name
 	Gtk::Entry Last_Name;					//Single line to enter last name
 	Gtk::Entry Age;						//Single line to enter age
