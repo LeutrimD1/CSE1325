@@ -33,8 +33,9 @@ protected:
 	Gtk::Button quit, calculate;					//Button used to quit
 	Gtk::Button order;						//Button used to send the order out
 	//---------------------apply widgets-------------------
-	Gtk::Entry Name;					//Single line to enter name
-	Gtk::SpinButton Age;					//Single line to enter age
+	Gtk::Entry First_Name;					//single line to enter first name
+	Gtk::Entry Last_Name;					//Single line to enter last name
+	Gtk::Entry Age;						//Single line to enter age
 	Gtk::Button Submit;					//Button to submit information
 	//---------------------Apply Widget Functions----------
 	void submit_application();
