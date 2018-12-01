@@ -142,8 +142,11 @@ void main_window::on_button_quit()
 void main_window::on_calculate()
 {
 	price = drink_price*size_multi + flavor_price;
-	price = roundf(price * 100) / 100;
-	std::string sprice = std::to_string(price);
+	//price = roundf(price * 100) / 100;
+	std::ostringstream ss;
+	ss.precision(2);
+	ss << std::fixed <<  price;
+	std::string sprice = ss.str();
 	std::string message = "The price of your overpriced bean water is $"+sprice;
 	Gtk::MessageDialog	dialog(*this, message, false, Gtk::MESSAGE_INFO);
 	dialog.run();
