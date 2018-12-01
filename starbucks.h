@@ -14,6 +14,7 @@ protected:
 	//Child widgets:
 	Gtk::Box VBox;							//VBox is for quit button at the bottom
 	std::ofstream ofs;						//out file stream for list_orders
+	std::ofstream outs;				//out file stream for list_applications
 	//-----------------------tabs---------------------------
 	Gtk::Grid grid1;
 	Gtk::Grid grid2;

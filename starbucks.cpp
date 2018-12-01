@@ -13,7 +13,7 @@ float price = 0;
 string drink;
 string flavor;
 string size;
-//---------------------------------------------
+//-------------submit_application variables------------
 string first_name;
 string last_name;
 string age;
@@ -42,7 +42,7 @@ main_window::main_window()
 	order("Send order")
 {
 	//---empty out order file---
-	std::ofstream ofs;	//this block empty out txt file so you can fill it each run.
+	//std::ofstream ofs;	//this block empty out txt file so you can fill it each run.
 	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);
 	ofs.close();
     
