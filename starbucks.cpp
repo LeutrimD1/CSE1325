@@ -113,6 +113,10 @@ main_window::main_window()
 	Caramel_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::caramel_check_selected));
 	Mocha_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::mocha_check_selected));
 	//-------------------------Apply Tab Set Up--------------------------------
+	//Name.add_label("Name");
+	//Age.add_label("Age");
+	Submit.add_label("Submit");	
+
 	grid2.add(Name);
 	grid2.add(Age);
 	grid2.add(Submit);

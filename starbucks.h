@@ -34,8 +34,10 @@ protected:
 	Gtk::Button order;						//Button used to send the order out
 	//---------------------apply widgets-------------------
 	Gtk::Entry Name;					//Single line to enter name
-	Gtk::Entry Age;						//Single line to enter age
+	Gtk::SpinButton Age;					//Single line to enter age
 	Gtk::Button Submit;					//Button to submit information
+	//---------------------Apply Widget Functions----------
+	void submit_application();
 	//.....................nutrition widgets...............
 	Gtk::Button Latte; 					//opens Latte nutrition
 	Gtk::Button Cap; 					//opens Cappaccino nutrition
