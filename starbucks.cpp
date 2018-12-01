@@ -36,9 +36,13 @@ main_window::main_window()
 	order("Send order")
 {
 	//---empty out order file---
-	std::ofstream ofs;			//this block empty out txt file so you can fill it each run.
+	std::ofstream ofs;	//this block empty out txt file so you can fill it each run.
 	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);
 	ofs.close();
+	//---empty out application file---
+	std::ofstream outs;			//Same as above, but for the application file
+	outs.open("list_applications.txt",std::ofstream::out | std::ofstream::trunc);
+	outs.close();
 	//--------------------------
 	set_title("STARBUCKS");			//sets the title the window
 	set_border_width(2);			//sets the border width
@@ -291,11 +295,18 @@ void main_window::mocha_check_selected(){
 //------------------Apply function-------------------------------
 void main_window::submit_application()
 {
+	std::ofstream outs;
+	outs.open("list_applications.txt");
+
 	if(Submit.get_focus_on_click())
 	{
 		first_name = First_Name.get_text();
 		last_name = Last_Name.get_text();
 		age = Age.get_text();
-		cout << "Dude thinks he's getting a job, LOL.'" << endl;
+		cout << "Dude thinks he's getting a job, LOL." << endl;
+
+		outs << "First Name : " << first_name << endl;
+		outs << "Last Name : " << last_name << endl;
+		outs << "Age : " << age << endl;
 	}
 }
