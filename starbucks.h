@@ -32,6 +32,10 @@ protected:
 	Gtk::ButtonBox ButtonBox;					//Holds the buttons below
 	Gtk::Button quit, calculate;					//Button used to quit
 	Gtk::Button order;						//Button used to send the order out
+	//---------------------apply widgets-------------------
+	Gtk::Entry Name;					//Single line to enter name
+	Gtk::Entry Age;						//Single line to enter age
+	Gtk::Button Submit;					//Button to submit information
 	//.....................nutrition widgets...............
 	Gtk::Button Latte; 					//opens Latte nutrition
 	Gtk::Button Cap; 					//opens Cappaccino nutrition

@@ -2,6 +2,7 @@
 #include <string>
 #include "starbucks.h"
 /*WHAT IS UP PARTY PEOPLE!!!!*/
+// Chillin', Killin'
 using namespace std;
 double drink_price = 0;
 double size_multi = 0;
@@ -111,6 +112,10 @@ main_window::main_window()
 	Vanilla_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::vanilla_check_selected));
 	Caramel_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::caramel_check_selected));
 	Mocha_Check.signal_toggled().connect(sigc::mem_fun(*this, &main_window::mocha_check_selected));
+	//-------------------------Apply Tab Set Up--------------------------------
+	grid2.add(Name);
+	grid2.add(Age);
+	grid2.add(Submit);
 	//-------------------------Nutrition Tab Set Up-----------------------------
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
