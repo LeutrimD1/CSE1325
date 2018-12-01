@@ -4,10 +4,16 @@
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 // Chillin', Killin'
 using namespace std;
+//-----------global price variables-------------
 double drink_price = 0;
 double size_multi = 0;
 double flavor_price = 0;
 float price = 0;
+//-----------global string variables-----------
+string drink;
+string flavor;
+string size;
+//---------------------------------------------
 string first_name;
 string last_name;
 string age;
@@ -36,9 +42,8 @@ main_window::main_window()
 	order("Send order")
 {
 	//---empty out order file---
-	std::ofstream ofs;			//this block empty out txt file so you can fill it each run.
-	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);
-	ofs.close();
+	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);	//stream object is declare in header.
+	ofs<<"List of orders for the day\n";					//adds to file, file closes on quit.
 	//--------------------------
 	set_title("STARBUCKS");			//sets the title the window
 	set_border_width(2);			//sets the border width
@@ -164,21 +169,17 @@ main_window::main_window()
 main_window::~main_window()
 {
 }
-void main_window::on_send_order(){//work in progress
-	std::ofstream ofs;
-	ofs.open("list_orders.txt");
-	string hel = "hello";
-	ofs<<hel;
-	ofs.close();
+void main_window::on_send_order(){//pretty much done
+	price = drink_price*size_multi + flavor_price;
+	ofs<<drink<<size<<flavor<<"Revenue as of now:"<<"$"<<price<<"\n";	//writes out to file. file closes below on quit.
 }
 void main_window::on_button_quit()
 {
+	ofs.close();
 	hide();
 }
-void main_window::on_calculate()
-{
+void main_window::on_calculate(){
 	price = drink_price*size_multi + flavor_price;
-	//price = roundf(price * 100) / 100;
 	std::ostringstream ss;
 	ss.precision(2);
 	ss << std::fixed <<  price;
@@ -197,39 +198,34 @@ I am setting the base value of the drinks as the following:
 Latte:$2.00
 Cappuccino:$3.00
 Macchiato:$3.50
-
-If for some reason yall want to change the values go ahead.
 */
-void main_window::no_drink_selected()
-{
+void main_window::no_drink_selected(){
 	if(Pick_Drink_Check.get_active())
 	{
 		drink_price=0;
 		std::cout<<"Why no drinks"<<std::endl;
+		drink = "No drink\n";
 	}
 }
-void main_window::latte_check_selected()
-{
-	if(Latte_Check.get_active())		
-	{
+void main_window::latte_check_selected(){
+	if(Latte_Check.get_active()){
 		drink_price+=2;
 		std::cout<<"Yall want some lattes"<<std::endl;
+		drink = "Latte ";
 	}
 }
-void main_window::cappuccino_check_selected()
-{
-	if(Cappuccino_Check.get_active())
-	{
+void main_window::cappuccino_check_selected(){
+	if(Cappuccino_Check.get_active()){
 		drink_price+=3;	
 		std::cout<<"Pop a cap"<<std::endl;
+		drink = "Cappuccino ";
 	}
 }
-void main_window::macchiato_check_selected()
-{
-	if(Macchiato_Check.get_active())
-	{	
+void main_window::macchiato_check_selected(){
+	if(Macchiato_Check.get_active()){	
 		drink_price+=3.5;
 		std::cout<<"Uh what"<<std::endl;
+		drink = "Macchiato ";
 	}
 }
 /*
@@ -237,55 +233,61 @@ I am setting the base value of the drinks as the following:
 Small: x1 of drink
 Medium: x2 of drink
 Large: x3 of drink
-
-If for some reason yall want to change the values go ahead.
 */
 void main_window::no_size_selected(){
 	if(Pick_Size_Check.get_active()){
 		size_multi=0;
 		std::cout<<"Yo, you gotta pick a size Holmes"<<std::endl;
+		size = "No size selected ";
 	}	
 }
 void main_window::small_check_selected(){
 	if(Small_Check.get_active()){
 		size_multi=1;
 		std::cout<<"You sure about that?"<<std::endl;
+		size = "Small ";
 	}	
 }
 void main_window::medium_check_selected(){
 	if(Medium_Check.get_active()){
 		size_multi=2;
 		std::cout<<"Almost..."<<std::endl;
+		size = "Medium ";
 	}	
 }
 void main_window::large_check_selected(){
 	if(Large_Check.get_active()){
 		size_multi=3;
-		std::cout<<"BIG BOIS!"<<std::endl;	
+		std::cout<<"BIG BOIS!"<<std::endl;
+		size = "Large ";
 	}
 }
 void main_window::no_flavor_selected(){
 	if(No_Flavor_Check.get_active()){
 		flavor_price = 0;
 		std::cout<<"Lame"<<std::endl;
+		flavor = "No flavor ";
 	}
 }
 void main_window::vanilla_check_selected(){
 	if(Vanilla_Check.get_active())	{	
 		flavor_price = .25;
 		std::cout<<"Boring"<<std::endl;
+		flavor = "Vanilla ";
 	}
 }
 void main_window::caramel_check_selected(){
 	if(Caramel_Check.get_active()){
 		flavor_price = .50;
 		std::cout<<"SPELL IT RIGHT NEXT TIME LEUTRIM jk"<<std::endl;
+		flavor = "Caramel ";
 	}
 }
 void main_window::mocha_check_selected(){
 	if(Mocha_Check.get_active()){
 		flavor_price = .50;
 		std::cout<<"Yummy"<<std::endl;
+		flavor = "Mocha ";
 	}
 }
 //------------------Apply function-------------------------------
