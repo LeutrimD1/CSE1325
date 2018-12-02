@@ -150,24 +150,16 @@ main_window::main_window()
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
 	Machi.add_label("Macchiatto");
-
-	//grid3.add(Latte);
-	//grid3.add(Cap);
-	//grid3.add(Machi);
 	
-	imagel.set("Latte_nutrition.png");
-	imagec.set("Cappuccino_nutrition.png");
-	imagem.set("Macchiato_nutrition.png");
+	imagel.set("Latte_nutrition.png"); //setting image
+	imagec.set("Cappuccino_nutrition.png"); //setting image
+	imagem.set("Macchiato_nutrition.png"); //setting image
 	
 	
-	grid3.attach(imagel,0,0,1,1);
-	grid3.attach(imagec,0,1,2,1);
-	grid3.attach(imagem,0,2,3,1);
-	scroll.add(grid3);
-
-	//Latte.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_latte));
-	//Cap.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_cap));
-	//Machi.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_machi));
+	grid3.attach(imagel,0,0,1,1); //image attach
+	grid3.attach(imagec,0,1,2,1); //image attach
+	grid3.attach(imagem,0,2,3,1); //image attach
+	scroll.add(grid3); //attching grid to scroll
 
 	//---------------------------------------------------------------------------
 	//ButtonBox.pack_start(calculate, Gtk::PACK_SHRINK);
@@ -203,10 +195,6 @@ void main_window::on_button_quit()
 	ofs.close();
 	outs.close();
 	hide();
-}
-
-void main_window::on_latte()
-{
 }
 
 void main_window::on_calculate(){
