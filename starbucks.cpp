@@ -142,10 +142,10 @@ main_window::main_window()
 	//Attaching function to submit button
 	Submit.signal_pressed().connect(sigc::mem_fun(*this, &main_window::submit_application));
 
-	grid2.add(First_Name);
-	grid2.add(Last_Name);
-	grid2.add(Age);
-	grid2.add(Submit);
+	grid2.attach(First_Name, 0, 0, 1, 1);
+	grid2.attach(Last_Name, 0, 1, 1, 1);
+	grid2.attach(Age, 0, 2, 1, 1);
+	grid2.attach(Submit, 0, 3, 1, 1);
 	//-------------------------Nutrition Tab Set Up-----------------------------
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
