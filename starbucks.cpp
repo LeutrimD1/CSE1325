@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "starbucks.h"
+
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 // Chillin', Killin'
 using namespace std;
@@ -17,6 +18,7 @@ string size;
 string first_name;
 string last_name;
 string age;
+//-------------Main Window Set Up----------------
 main_window::main_window()
 : VBox(Gtk::ORIENTATION_VERTICAL),
 	Label_drink("Drink"),
@@ -149,9 +151,24 @@ main_window::main_window()
 	Cap.add_label("Cappaccino");
 	Machi.add_label("Macchiatto");
 
-	grid3.add(Latte);
-	grid3.add(Cap);
-	grid3.add(Machi);
+	//grid3.add(Latte);
+	//grid3.add(Cap);
+	//grid3.add(Machi);
+	
+	imagel.set("Latte_nutrition.png");
+	imagec.set("Cappuccino_nutrition.png");
+	imagem.set("Macchiato_nutrition.png");
+	
+	
+	grid3.attach(imagel,0,0,1,1);
+	grid3.attach(imagec,0,1,2,1);
+	grid3.attach(imagem,0,2,3,1);
+	scroll.add(grid3);
+
+	//Latte.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_latte));
+	//Cap.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_cap));
+	//Machi.signal_clicked().connect(sigc::mem_fun(*this,&main_window::on_machi));
+
 	//---------------------------------------------------------------------------
 	//ButtonBox.pack_start(calculate, Gtk::PACK_SHRINK);
 	grid1.attach(calculate,		0,5,1,1);
@@ -165,7 +182,7 @@ main_window::main_window()
 	Notebook.append_page(image, "Home");
 	Notebook.append_page(grid1, "Order");
 	Notebook.append_page(grid2, "Apply");
-	Notebook.append_page(grid3, "Nutrition Facts");
+	Notebook.append_page(scroll, "Nutrition Facts");
 
 	Notebook.signal_switch_page().connect(sigc::mem_fun(*this, &main_window::on_notebook_switch_page));
 
@@ -175,6 +192,8 @@ main_window::main_window()
 main_window::~main_window()
 {
 }
+
+//-------------------Functions----------------------------------
 void main_window::on_send_order(){//pretty much done
 	price = drink_price*size_multi + flavor_price;
 	ofs<<drink<<size<<flavor<<"Revenue as of now:"<<"$"<<price<<"\n";	//writes out to file. file closes below on quit.
@@ -185,6 +204,11 @@ void main_window::on_button_quit()
 	outs.close();
 	hide();
 }
+
+void main_window::on_latte()
+{
+}
+
 void main_window::on_calculate(){
 	price = drink_price*size_multi + flavor_price;
 	std::ostringstream ss;
