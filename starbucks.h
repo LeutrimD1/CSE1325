@@ -2,6 +2,7 @@
 #define GTKMM_EXAMPLEWINDOW_H
 #include <gtkmm.h>
 #include <fstream>
+
 class main_window : public Gtk::Window
 {
 public:
@@ -41,10 +42,12 @@ protected:
 	Gtk::Button Submit;					//Button to submit information
 	//---------------------Apply Widget Functions----------
 	void submit_application();
-	//.....................nutrition widgets...............
+	//---------------------nutrition widgets---------------------
 	Gtk::Button Latte; 					//opens Latte nutrition
 	Gtk::Button Cap; 					//opens Cappaccino nutrition
 	Gtk::Button Machi;					//opens Macchiato nutrition
+	Gtk::ScrolledWindow scroll;
+	Gtk::Image imagel,imagem,imagec;
 	//---------------Signals for the check boxes-----------
 	void no_drink_selected();				//None is checked
 	void latte_check_selected();				//Latte_check selected
@@ -68,4 +71,6 @@ protected:
 	//-----------------------------
 	void on_send_order();					//opens a text file and adds a copy of a order.
 };
+
+
 #endif //GTKMM_EXAMPLE:WINDOW_H

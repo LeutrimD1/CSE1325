@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-=======
-First Name : Kat
-Last Name : no
-Age : 500
->>>>>>> master
