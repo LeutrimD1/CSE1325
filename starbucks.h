@@ -40,6 +40,7 @@ protected:
 	Gtk::Entry First_Name;					//single line to enter first name
 	Gtk::Entry Last_Name;					//Single line to enter last name
 	Gtk::Entry Age;						//Single line to enter age
+	Gtk::Entry Employee_Type;
 	Gtk::Button Submit;					//Button to submit information
 	//---------------------Apply Widget Functions----------
 	void submit_application();
