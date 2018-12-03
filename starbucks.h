@@ -31,9 +31,10 @@ protected:
 	Gtk::Label Label_Cappuccino, Label_Macchiato, Label_Latte, Drink_Default;	//Labels for the drinks.
 	Gtk::Label Label_small, Label_medium, Label_large, Size_Default;		//Labels for the size.
 	Gtk::Label Label_vanilla, Label_caramel, Label_mocha, Flavor_Default;		//Labels for the flavor.
+	Gtk::Label Label_opinion;							//Label for opinion on drink.
 	//---------------------page buttons---------------------
 	Gtk::ButtonBox ButtonBox;				//Holds the buttons below
-	Gtk::Button quit, calculate;				//Button used to quit
+	Gtk::Button quit, calculate, yes, no;			//Button used to quit; also yes no button for opinion on drink.
 	Gtk::Button order;					//Button used to send the order out
 	//---------------------Apply Widgets-------------------
 	Gtk::Entry First_Name;					//single line to enter first name
@@ -70,6 +71,8 @@ protected:
 	void on_machi(); 					//opens Machi
 	//-----------------------------
 	void on_send_order();					//opens a text file and adds a copy of a order.
+	void on_no_opinion();					//deletes a drink from order list.
+	void on_yes_opinion();					//dialog your welcome.
 };
 
 

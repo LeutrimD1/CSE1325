@@ -5,6 +5,10 @@
 /*WHAT IS UP PARTY PEOPLE!!!!*/
 // Chillin', Killin'
 using namespace std;
+int sending = 0;
+string drink1;
+string flavor1;
+string size1;
 //-----------global price variables-------------
 double drink_price = 0;
 double size_multi = 0;
@@ -41,7 +45,10 @@ main_window::main_window()
 	Flavor_Default("None"),
 	quit("Quit"),
 	calculate("Calculate"),
-	order("Send order")
+	order("Send order"),
+	Label_opinion("Did you like your drink?"),
+	yes("Yes"),
+	no("No")
 {
 	//---empty out application file---
 	outs.open("list_applications.txt",std::ofstream::out | std::ofstream::trunc);
@@ -165,6 +172,9 @@ main_window::main_window()
 	//ButtonBox.pack_start(calculate, Gtk::PACK_SHRINK);
 	grid1.attach(calculate,		0,5,1,1);
 	grid1.attach(order,		1,5,2,1);
+	grid1.attach(Label_opinion,	4,5,2,1);
+	grid1.attach(yes,		4,6,1,1);
+	grid1.attach(no,		4,7,1,1);
 	calculate.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_calculate));
 	ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
 	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
@@ -308,6 +318,13 @@ void main_window::mocha_check_selected(){
 		std::cout<<"Yummy"<<std::endl;
 		flavor = "Mocha ";
 	}
+}
+//---------------------------------------------------------------
+void main_window::on_yes_opinion(){
+}
+void main_window::on_no_opinion(){
+	sending = 0;
+	//ofs.seekg(-1,ios_base::end);
 }
 //------------------Apply function-------------------------------
 void main_window::submit_application()
