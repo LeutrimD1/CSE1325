@@ -9,6 +9,7 @@ int sending = 0;
 string drink1;
 string flavor1;
 string size1;
+float total_revenue;
 //-----------global price variables-------------
 double drink_price = 0;
 double size_multi = 0;
@@ -54,12 +55,10 @@ main_window::main_window()
 	//---empty out application file---
 	outs.open("list_applications.txt",std::ofstream::out | std::ofstream::trunc);
 	outs.close();
-
+	//--------------------------------
 	ofs.open("list_orders.txt",std::ofstream::out | std::ofstream::trunc);	//stream object is declare in header.
 	ofs<<"List of orders for the day\n";					//adds to file, file closes on quit.
-
 	outs.open("list_applications.txt");
-
 	//--------------------------
 	set_title("STARBUCKS");			//sets the title the window
 	set_border_width(2);			//sets the border width
@@ -202,10 +201,12 @@ main_window::~main_window()
 //-------------------Functions----------------------------------
 void main_window::on_send_order(){//pretty much done
 	price = drink_price*size_multi + flavor_price;
-	ofs<<drink<<size<<flavor<<"Revenue as of now:"<<"$"<<price<<"\n";	//writes out to file. file closes below on quit.
+	total_revenue = total_revenue + price;
+	ofs<<drink<<size<<flavor<<"Price:"<<"$"<<price<<"\n";	//writes out to file. file closes below on quit.
 }
 void main_window::on_button_quit()
 {
+	ofs<<"Revenue for the day: $"<< total_revenue;		//gives out the total before closing on the list_orders.
 	ofs.close();
 	outs.close();
 	hide();
@@ -242,21 +243,21 @@ void main_window::no_drink_selected(){
 }
 void main_window::latte_check_selected(){
 	if(Latte_Check.get_active()){
-		drink_price+=2;
+		drink_price=2;
 		std::cout<<"Yall want some lattes"<<std::endl;
 		drink = "Latte ";
 	}
 }
 void main_window::cappuccino_check_selected(){
 	if(Cappuccino_Check.get_active()){
-		drink_price+=3;	
+		drink_price=3;	
 		std::cout<<"Pop a cap"<<std::endl;
 		drink = "Cappuccino ";
 	}
 }
 void main_window::macchiato_check_selected(){
 	if(Macchiato_Check.get_active()){	
-		drink_price+=3.5;
+		drink_price=3.5;
 		std::cout<<"Uh what"<<std::endl;
 		drink = "Macchiato ";
 	}

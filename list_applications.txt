@@ -1,5 +1,0 @@
-First Name : *Enter first name here*
-Last Name : *Enter last name here*
-Employment Type :Full-Time
-Age : *Enter age here*
-
