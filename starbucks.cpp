@@ -331,8 +331,14 @@ void main_window::on_yes_opinion(){
 	dialog.run();
 }
 void main_window::on_no_opinion(){
-	sending = 0;
-	//ofs.seekg(-1,ios_base::end);
+	std::ostringstream ss;
+	ss.precision(2);
+	ss << std::fixed <<  price;
+	std::string sprice = ss.str();
+	std::string message = "Okay refunding you "+ sprice;
+	Gtk::MessageDialog	dialog(*this, message, false, Gtk::MESSAGE_INFO);
+	dialog.run();
+	total_revenue = total_revenue - price;
 }
 //------------------Apply function-------------------------------
 void main_window::submit_application()
