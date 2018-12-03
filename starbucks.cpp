@@ -179,7 +179,8 @@ main_window::main_window()
 	ButtonBox.pack_start(quit, Gtk::PACK_SHRINK);
 	quit.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_button_quit));
 	order.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_send_order));
-
+	yes.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_yes_opinion));
+	no.signal_clicked().connect(sigc::mem_fun(*this, &main_window::on_no_opinion));
 	//Add the Notebook pages:
 	Notebook.append_page(image, "Home");
 	Notebook.append_page(grid1, "Order");
@@ -321,6 +322,9 @@ void main_window::mocha_check_selected(){
 }
 //---------------------------------------------------------------
 void main_window::on_yes_opinion(){
+	std::string message = "You gave you're barista a high five!";	
+	Gtk::MessageDialog	dialog(*this, message, false, Gtk::MESSAGE_INFO);
+	dialog.run();
 }
 void main_window::on_no_opinion(){
 	sending = 0;
