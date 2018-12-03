@@ -13,6 +13,7 @@ float price = 0;
 string drink;
 string flavor;
 string size;
+string employment_type;
 //-------------submit_application variables------------
 string first_name;
 string last_name;
@@ -134,6 +135,7 @@ main_window::main_window()
 	First_Name.set_text("*Enter first name here*");
 	Last_Name.set_text("*Enter last name here*");
 	Age.set_text("*Enter age here*");
+	Employee_Type.set_text("Full-time or Part-time?");
 	Submit.add_label("Submit Application");
 
 	First_Name.set_max_width_chars(25);
@@ -147,7 +149,8 @@ main_window::main_window()
 	grid2.attach(First_Name, 0, 0, 1, 1);
 	grid2.attach(Last_Name, 0, 1, 1, 1);
 	grid2.attach(Age, 0, 2, 1, 1);
-	grid2.attach(Submit, 0, 3, 1, 1);
+	grid2.attach(Employee_Type, 0, 3, 1, 1);
+	grid2.attach(Submit, 0, 4, 1, 1);
 	//-------------------------Nutrition Tab Set Up-----------------------------
 	Latte.add_label("Latte");
 	Cap.add_label("Cappaccino");
@@ -307,9 +310,11 @@ void main_window::submit_application()
 	first_name = First_Name.get_text();
 	last_name = Last_Name.get_text();
 	age = Age.get_text();
+	employment_type = Employee_Type.get_text();
 	cout << "Dude thinks he's getting a job, LOL." << endl;
 
 	outs << "First Name : " << first_name << endl;
 	outs << "Last Name : " << last_name << endl;
+	outs << "Employment Type : " << employment_type << endl;
 	outs << "Age : " << age << "\n" << endl;
 }
